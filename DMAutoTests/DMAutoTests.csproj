@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\linq2db.SqlCe.5.4.1\build\linq2db.SqlCe.props" Condition="Exists('..\packages\linq2db.SqlCe.5.4.1\build\linq2db.SqlCe.props')" />
   <Import Project="..\packages\NUnit3TestAdapter.4.6.0\build\net462\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.4.6.0\build\net462\NUnit3TestAdapter.props')" />
   <Import Project="..\packages\NUnit.4.2.2\build\NUnit.props" Condition="Exists('..\packages\NUnit.4.2.2\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -19,6 +20,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <LangVersion>8.0</LangVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -50,6 +52,12 @@
     <Reference Include="Interop.UIAutomationClient, Version=10.0.19041.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Interop.UIAutomationClient.10.19041.0\lib\net45\Interop.UIAutomationClient.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="linq2db, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e41013125f9e410a, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.5.4.1\lib\net472\linq2db.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=4.2.2.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.4.2.2\lib\net462\nunit.framework.dll</HintPath>
@@ -88,11 +96,136 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppManager\AppManager.cs" />
+    <Compile Include="LocalDatabase\Area.cs" />
+    <Compile Include="LocalDatabase\AreaPoint.cs" />
+    <Compile Include="LocalDatabase\AutostatusConfig.cs" />
+    <Compile Include="LocalDatabase\BlastBlock.cs" />
+    <Compile Include="LocalDatabase\BlastBlockPoint.cs" />
+    <Compile Include="LocalDatabase\BlastCard.cs" />
+    <Compile Include="LocalDatabase\BlastCardContain.cs" />
+    <Compile Include="LocalDatabase\BlastHole.cs" />
+    <Compile Include="LocalDatabase\BlastHoleNote.cs" />
+    <Compile Include="LocalDatabase\BlastZone.cs" />
+    <Compile Include="LocalDatabase\BlastZoneHole.cs" />
+    <Compile Include="LocalDatabase\BlastZonePoint.cs" />
+    <Compile Include="LocalDatabase\Complication.cs" />
+    <Compile Include="LocalDatabase\Consumable.cs" />
+    <Compile Include="LocalDatabase\ConsumableApiece.cs" />
+    <Compile Include="LocalDatabase\ConsumableEvent.cs" />
+    <Compile Include="LocalDatabase\ConsumableManufacturer.cs" />
+    <Compile Include="LocalDatabase\ConsumableOptimal.cs" />
+    <Compile Include="LocalDatabase\ConsumableType.cs" />
+    <Compile Include="LocalDatabase\ConsumableViolation.cs" />
+    <Compile Include="LocalDatabase\ConsumableWriteoffReason.cs" />
+    <Compile Include="LocalDatabase\CoordsMathResult.cs" />
+    <Compile Include="LocalDatabase\CoordsMathTransformation.cs" />
+    <Compile Include="LocalDatabase\CoordsProjTransformation.cs" />
+    <Compile Include="LocalDatabase\CoordsSetting.cs" />
+    <Compile Include="LocalDatabase\CoordsTransformationType.cs" />
+    <Compile Include="LocalDatabase\CurrentState.cs" />
+    <Compile Include="LocalDatabase\CurrentStateSync.cs" />
+    <Compile Include="LocalDatabase\DrillBitDiameter.cs" />
+    <Compile Include="LocalDatabase\DrillBlock.cs" />
+    <Compile Include="LocalDatabase\DrillBlockPoint.cs" />
+    <Compile Include="LocalDatabase\DrillGaugeLimit.cs" />
+    <Compile Include="LocalDatabase\DrillGaugeTran.cs" />
+    <Compile Include="LocalDatabase\DrillGaugeType.cs" />
+    <Compile Include="LocalDatabase\DrillGeoGaugeType.cs" />
+    <Compile Include="LocalDatabase\DrillGeoGaugeValueType.cs" />
+    <Compile Include="LocalDatabase\DrillTran.cs" />
+    <Compile Include="LocalDatabase\EngineHour.cs" />
+    <Compile Include="LocalDatabase\Event.cs" />
+    <Compile Include="LocalDatabase\ExplosiveTank.cs" />
+    <Compile Include="LocalDatabase\ExplosiveType.cs" />
+    <Compile Include="LocalDatabase\FuelTran.cs" />
+    <Compile Include="LocalDatabase\HistoryRepeater.cs" />
+    <Compile Include="LocalDatabase\Hole.cs" />
+    <Compile Include="LocalDatabase\HoleStatus.cs" />
+    <Compile Include="LocalDatabase\HpJob.cs" />
+    <Compile Include="LocalDatabase\Language.cs" />
+    <Compile Include="LocalDatabase\Location.cs" />
+    <Compile Include="LocalDatabase\LocationBeacon.cs" />
+    <Compile Include="LocalDatabase\LocationPoint.cs" />
+    <Compile Include="LocalDatabase\LocationType.cs" />
+    <Compile Include="LocalDatabase\Maintenance.cs" />
+    <Compile Include="LocalDatabase\MaintenanceTask.cs" />
+    <Compile Include="LocalDatabase\MaintenanceTran.cs" />
+    <Compile Include="LocalDatabase\Material.cs" />
+    <Compile Include="LocalDatabase\MaterialType.cs" />
+    <Compile Include="LocalDatabase\MatrixInfo.cs" />
+    <Compile Include="LocalDatabase\MatrixValue.cs" />
+    <Compile Include="LocalDatabase\Message.cs" />
+    <Compile Include="LocalDatabase\RfidCard.cs" />
+    <Compile Include="LocalDatabase\RitNewdb.cs" />
+    <Compile Include="LocalDatabase\Segment.cs" />
+    <Compile Include="LocalDatabase\SegmentPoint.cs" />
+    <Compile Include="LocalDatabase\Shift.cs" />
+    <Compile Include="LocalDatabase\StaffMobile.cs" />
+    <Compile Include="LocalDatabase\StaffOffice.cs" />
+    <Compile Include="LocalDatabase\StatusCategory.cs" />
+    <Compile Include="LocalDatabase\SystemConfig.cs" />
+    <Compile Include="LocalDatabase\TableVersion.cs" />
+    <Compile Include="LocalDatabase\TempBufferMessage.cs" />
+    <Compile Include="LocalDatabase\TextMessage.cs" />
+    <Compile Include="LocalDatabase\TranslationConsumable.cs" />
+    <Compile Include="LocalDatabase\TranslationConsumableEvent.cs" />
+    <Compile Include="LocalDatabase\TranslationConsumableType.cs" />
+    <Compile Include="LocalDatabase\TranslationCrew.cs" />
+    <Compile Include="LocalDatabase\TranslationDangerZone.cs" />
+    <Compile Include="LocalDatabase\TranslationDevice.cs" />
+    <Compile Include="LocalDatabase\TranslationDeviceType.cs" />
+    <Compile Include="LocalDatabase\TranslationDigBlock.cs" />
+    <Compile Include="LocalDatabase\TranslationDisruption.cs" />
+    <Compile Include="LocalDatabase\TranslationDisruptionLevel.cs" />
+    <Compile Include="LocalDatabase\TranslationEvent.cs" />
+    <Compile Include="LocalDatabase\TranslationEventFormat.cs" />
+    <Compile Include="LocalDatabase\TranslationExplosiveType.cs" />
+    <Compile Include="LocalDatabase\TranslationHarmfulZone.cs" />
+    <Compile Include="LocalDatabase\TranslationHoleStatus.cs" />
+    <Compile Include="LocalDatabase\TranslationInterface.cs" />
+    <Compile Include="LocalDatabase\TranslationInterfaceType.cs" />
+    <Compile Include="LocalDatabase\TranslationLocation.cs" />
+    <Compile Include="LocalDatabase\TranslationLocationType.cs" />
+    <Compile Include="LocalDatabase\TranslationMaterial.cs" />
+    <Compile Include="LocalDatabase\TranslationMaterialType.cs" />
+    <Compile Include="LocalDatabase\TranslationProfile.cs" />
+    <Compile Include="LocalDatabase\TranslationSegment.cs" />
+    <Compile Include="LocalDatabase\TranslationShift.cs" />
+    <Compile Include="LocalDatabase\TranslationStaffMobile.cs" />
+    <Compile Include="LocalDatabase\TranslationStaffMobileGrade.cs" />
+    <Compile Include="LocalDatabase\TranslationStaffMobileRank.cs" />
+    <Compile Include="LocalDatabase\TranslationStaffMobileType.cs" />
+    <Compile Include="LocalDatabase\TranslationStaffOffice.cs" />
+    <Compile Include="LocalDatabase\TranslationStatusCategory.cs" />
+    <Compile Include="LocalDatabase\TranslationSystemRole.cs" />
+    <Compile Include="LocalDatabase\TranslationSystemRuleAccess.cs" />
+    <Compile Include="LocalDatabase\TranslationSystemRuleType.cs" />
+    <Compile Include="LocalDatabase\TranslationTireStatus.cs" />
+    <Compile Include="LocalDatabase\TranslationUnitStatus.cs" />
+    <Compile Include="LocalDatabase\TranslationUnitType.cs" />
+    <Compile Include="LocalDatabase\TranslationUom.cs" />
+    <Compile Include="LocalDatabase\TranslationWarehouseSector.cs" />
+    <Compile Include="LocalDatabase\Unit.cs" />
+    <Compile Include="LocalDatabase\UnitBlast.cs" />
+    <Compile Include="LocalDatabase\UnitDrill.cs" />
+    <Compile Include="LocalDatabase\UnitDrillType.cs" />
+    <Compile Include="LocalDatabase\UnitGroup.cs" />
+    <Compile Include="LocalDatabase\UnitMaintenance.cs" />
+    <Compile Include="LocalDatabase\UnitShovel.cs" />
+    <Compile Include="LocalDatabase\UnitStatus.cs" />
+    <Compile Include="LocalDatabase\UnitStatusDrillUnitType.cs" />
+    <Compile Include="LocalDatabase\UnitStatusUnitType.cs" />
+    <Compile Include="LocalDatabase\UnitType.cs" />
+    <Compile Include="LocalDatabase\VirtualGeoPlcTempParam.cs" />
+    <Compile Include="LocalDatabase\VoiceMessage.cs" />
     <Compile Include="Tests\TestBase.cs" />
     <Compile Include="Tests\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
@@ -104,6 +237,7 @@
     <Error Condition="!Exists('..\packages\NUnit.4.2.2\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.4.2.2\build\NUnit.props'))" />
     <Error Condition="!Exists('..\packages\Interop.UIAutomationClient.10.19041.0\build\Interop.UIAutomationClient.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Interop.UIAutomationClient.10.19041.0\build\Interop.UIAutomationClient.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.4.6.0\build\net462\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.4.6.0\build\net462\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\linq2db.SqlCe.5.4.1\build\linq2db.SqlCe.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\linq2db.SqlCe.5.4.1\build\linq2db.SqlCe.props'))" />
   </Target>
   <Import Project="..\packages\Interop.UIAutomationClient.10.19041.0\build\Interop.UIAutomationClient.targets" Condition="Exists('..\packages\Interop.UIAutomationClient.10.19041.0\build\Interop.UIAutomationClient.targets')" />
 </Project>
