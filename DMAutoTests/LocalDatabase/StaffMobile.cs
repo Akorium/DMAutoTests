@@ -40,5 +40,12 @@ namespace DMAutoTests
 				return (from sm in db.StaffMobiles select sm).ToList();
 			}
 		}
+		public static StaffMobile GetFirstOrDefault()
+		{
+			using (RitNewdb db = new RitNewdb("RIT_NEW"))
+			{
+				return (from sm in db.StaffMobiles select sm).FirstOrDefault();
+			}
+		}
 	}
 }

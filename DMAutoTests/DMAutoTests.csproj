@@ -71,6 +71,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Management" />
@@ -96,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppManager\AppManager.cs" />
+    <Compile Include="AppManager\HelperBase.cs" />
+    <Compile Include="AppManager\NavigationHelper.cs" />
+    <Compile Include="AppManager\OperatorPanelHelper.cs" />
     <Compile Include="LocalDatabase\Area.cs" />
     <Compile Include="LocalDatabase\AreaPoint.cs" />
     <Compile Include="LocalDatabase\AutostatusConfig.cs" />
