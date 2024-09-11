@@ -7,6 +7,7 @@
 
 using LinqToDB.Mapping;
 using System;
+using System.Linq;
 
 #pragma warning disable 1573, 1591
 #nullable enable
@@ -42,5 +43,13 @@ namespace DMAutoTests
 		[Column("INIT_DEFAULT_DATA"       )] public bool?     InitDefaultData       { get; set; } // bit
 		[Column("SHIFT_PENETRATION"       )] public double?   ShiftPenetration      { get; set; } // float
 		[Column("DATE_PREVIOUS_LAUNCH"    )] public DateTime? DatePreviousLaunch    { get; set; } // datetime
-	}
+
+        public static CurrentState GetFirstOrDefault()
+        {
+            using (RitNewdb db = new RitNewdb("RIT_NEW"))
+            {
+                return (from cs in db.CurrentStates select cs).FirstOrDefault();
+            }
+        }
+    }
 }

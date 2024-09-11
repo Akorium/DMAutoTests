@@ -7,9 +7,9 @@ namespace DMAutoTests
         public ApplicationManager manager;
 
         [OneTimeSetUp]
-        public void InitApplication() 
-        {  
-            manager = new ApplicationManager(); 
+        public void InitApplication()
+        {
+            manager = new ApplicationManager();
         }
 
         [OneTimeTearDown]

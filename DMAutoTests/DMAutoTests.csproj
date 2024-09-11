@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppManager\AppManager.cs" />
+    <Compile Include="AppManager\FileWorker.cs" />
     <Compile Include="AppManager\HelperBase.cs" />
     <Compile Include="AppManager\NavigationHelper.cs" />
     <Compile Include="AppManager\OperatorPanelHelper.cs" />
@@ -223,7 +224,7 @@
     <Compile Include="LocalDatabase\VirtualGeoPlcTempParam.cs" />
     <Compile Include="LocalDatabase\VoiceMessage.cs" />
     <Compile Include="Tests\TestBase.cs" />
-    <Compile Include="Tests\LoginTests.cs" />
+    <Compile Include="Tests\OperatorPanelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

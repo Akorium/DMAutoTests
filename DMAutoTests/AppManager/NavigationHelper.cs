@@ -31,10 +31,10 @@ namespace DMAutoTests
         /// <param name="parent">parent element of label</param>
         /// <param name="automationId">automationId of label</param>
         /// <returns></returns>
-        public Label GetLabelByAutomationId(AutomationElement parent, string automationId)
+        public string GetLabelTextByAutomationId(AutomationElement parent, string automationId)
         {
             Label label = parent.FindFirstChild(cf => cf.ByAutomationId(automationId)).AsLabel();
-            return label;
+            return label.Text;
         }
     }
 }
